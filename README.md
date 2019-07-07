@@ -8,7 +8,7 @@ Deduplicate CLI is a tool that will take identically structured json records and
 
 3. If the dates are identical the data from the record provided last in the list should be preferred
 
-A log file of the original content, deduplicated leads, and a list of the changes will be created.
+A log file of the original content, deduplicated leads, and a list of the changes will be created. Also, a json file with a list of unique leads will be created.
 
 # Installation
 
