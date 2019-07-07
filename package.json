@@ -1,0 +1,26 @@
+{
+  "name": "deduplicate",
+  "version": "1.0.0",
+  "description": "Command line tool to remove records with duplicate emails or ids",
+  "main": "./lib/app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "node",
+    "cli",
+    "de-duplicator",
+    "deduplicate"
+  ],
+  "bin": {
+    "deduplicate": "./bin/deduplicate"
+  },
+  "author": "Sarah Dunlap",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "24.8.0"
+  },
+  "dependencies": {
+    "commander": "2.20.0"
+  }
+}

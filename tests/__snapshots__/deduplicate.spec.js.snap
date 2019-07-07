@@ -1,0 +1,444 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deduplicate Results if one lead, should match snapshot and have no changes detected message 1`] = `
+"
+Original Lead List
+
+{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        }
+    ]
+}
+
+------------------------------
+
+Unique Lead List
+
+[
+    {
+        \\"_id\\": \\"jklw\\",
+        \\"email\\": \\"test@test.com\\",
+        \\"firstName\\": \\"Peach\\",
+        \\"lastName\\": \\"Smith\\",
+        \\"address\\": \\"123 Main St\\",
+        \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+    }
+]
+
+------------------------------
+
+Change History
+
+No changes detected.
+"
+`;
+
+exports[`Deduplicate Results if two duplicate leads, should match snapshot and have exact duplicate message 1`] = `
+Object {
+  "logContent": "
+Original Lead List
+
+{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        },
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        }
+    ]
+}
+
+------------------------------
+
+Unique Lead List
+
+[
+    {
+        \\"_id\\": \\"jklw\\",
+        \\"email\\": \\"test@test.com\\",
+        \\"firstName\\": \\"Peach\\",
+        \\"lastName\\": \\"Smith\\",
+        \\"address\\": \\"123 Main St\\",
+        \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+    }
+]
+
+------------------------------
+
+Change History
+
+Duplicate entry detected for email field (test@test.com).
+Lead Id: jklw has an exact duplicate.
+",
+  "uniqueLeadsContent": "{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        }
+    ]
+}",
+}
+`;
+
+exports[`Deduplicate Results if two leads with same email and first lead has later date, should match snapshot 1`] = `
+Object {
+  "logContent": "
+Original Lead List
+
+{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2018-05-07T18:30:20+00:00\\"
+        },
+        {
+            \\"_id\\": \\"esdf\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Gary\\",
+            \\"lastName\\": \\"Parker\\",
+            \\"address\\": \\"432 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+        }
+    ]
+}
+
+------------------------------
+
+Unique Lead List
+
+[
+    {
+        \\"_id\\": \\"jklw\\",
+        \\"email\\": \\"test@test.com\\",
+        \\"firstName\\": \\"Peach\\",
+        \\"lastName\\": \\"Smith\\",
+        \\"address\\": \\"123 Main St\\",
+        \\"entryDate\\": \\"2018-05-07T18:30:20+00:00\\"
+    }
+]
+
+------------------------------
+
+Change History
+
+Duplicate entry detected for email field (test@test.com).
+_id: esdf ----> jklw
+firstName: Gary ----> Peach
+lastName: Parker ----> Smith
+address: 432 Main St ----> 123 Main St
+entryDate: 2014-05-07T18:30:20+00:00 ----> 2018-05-07T18:30:20+00:00
+
+",
+  "uniqueLeadsContent": "{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2018-05-07T18:30:20+00:00\\"
+        }
+    ]
+}",
+}
+`;
+
+exports[`Deduplicate Results if two leads with same email and same date, should match snapshot 1`] = `
+Object {
+  "logContent": "
+Original Lead List
+
+{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        },
+        {
+            \\"_id\\": \\"esdf\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Gary\\",
+            \\"lastName\\": \\"Parker\\",
+            \\"address\\": \\"432 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        }
+    ]
+}
+
+------------------------------
+
+Unique Lead List
+
+[
+    {
+        \\"_id\\": \\"esdf\\",
+        \\"email\\": \\"test@test.com\\",
+        \\"firstName\\": \\"Gary\\",
+        \\"lastName\\": \\"Parker\\",
+        \\"address\\": \\"432 Main St\\",
+        \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+    }
+]
+
+------------------------------
+
+Change History
+
+Duplicate entry detected for email field (test@test.com).
+_id: jklw ----> esdf
+firstName: Peach ----> Gary
+lastName: Smith ----> Parker
+address: 123 Main St ----> 432 Main St
+
+",
+  "uniqueLeadsContent": "{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"esdf\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Gary\\",
+            \\"lastName\\": \\"Parker\\",
+            \\"address\\": \\"432 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        }
+    ]
+}",
+}
+`;
+
+exports[`Deduplicate Results if two leads with same email but different casing, should keep one and match snapshot 1`] = `
+Object {
+  "logContent": "
+Original Lead List
+
+{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        },
+        {
+            \\"_id\\": \\"esdf\\",
+            \\"email\\": \\"TEST@TEST.COM\\",
+            \\"firstName\\": \\"Gary\\",
+            \\"lastName\\": \\"Parker\\",
+            \\"address\\": \\"432 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+        }
+    ]
+}
+
+------------------------------
+
+Unique Lead List
+
+[
+    {
+        \\"_id\\": \\"esdf\\",
+        \\"email\\": \\"TEST@TEST.COM\\",
+        \\"firstName\\": \\"Gary\\",
+        \\"lastName\\": \\"Parker\\",
+        \\"address\\": \\"432 Main St\\",
+        \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+    }
+]
+
+------------------------------
+
+Change History
+
+Duplicate entry detected for email field (test@test.com).
+_id: jklw ----> esdf
+email: test@test.com ----> TEST@TEST.COM
+firstName: Peach ----> Gary
+lastName: Smith ----> Parker
+address: 123 Main St ----> 432 Main St
+entryDate: 2014-05-07T17:30:20+00:00 ----> 2014-05-07T18:30:20+00:00
+
+",
+  "uniqueLeadsContent": "{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"esdf\\",
+            \\"email\\": \\"TEST@TEST.COM\\",
+            \\"firstName\\": \\"Gary\\",
+            \\"lastName\\": \\"Parker\\",
+            \\"address\\": \\"432 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+        }
+    ]
+}",
+}
+`;
+
+exports[`Deduplicate Results if two leads with same email, should match snapshot 1`] = `
+Object {
+  "logContent": "
+Original Lead List
+
+{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        },
+        {
+            \\"_id\\": \\"esdf\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Gary\\",
+            \\"lastName\\": \\"Parker\\",
+            \\"address\\": \\"432 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+        }
+    ]
+}
+
+------------------------------
+
+Unique Lead List
+
+[
+    {
+        \\"_id\\": \\"esdf\\",
+        \\"email\\": \\"test@test.com\\",
+        \\"firstName\\": \\"Gary\\",
+        \\"lastName\\": \\"Parker\\",
+        \\"address\\": \\"432 Main St\\",
+        \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+    }
+]
+
+------------------------------
+
+Change History
+
+Duplicate entry detected for email field (test@test.com).
+_id: jklw ----> esdf
+firstName: Peach ----> Gary
+lastName: Smith ----> Parker
+address: 123 Main St ----> 432 Main St
+entryDate: 2014-05-07T17:30:20+00:00 ----> 2014-05-07T18:30:20+00:00
+
+",
+  "uniqueLeadsContent": "{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"esdf\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Gary\\",
+            \\"lastName\\": \\"Parker\\",
+            \\"address\\": \\"432 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+        }
+    ]
+}",
+}
+`;
+
+exports[`Deduplicate Results if two leads with same id, should match snapshot 1`] = `
+Object {
+  "logContent": "
+Original Lead List
+
+{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"test@test.com\\",
+            \\"firstName\\": \\"Peach\\",
+            \\"lastName\\": \\"Smith\\",
+            \\"address\\": \\"123 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T17:30:20+00:00\\"
+        },
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"what@test.com\\",
+            \\"firstName\\": \\"Gary\\",
+            \\"lastName\\": \\"Parker\\",
+            \\"address\\": \\"432 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+        }
+    ]
+}
+
+------------------------------
+
+Unique Lead List
+
+[
+    {
+        \\"_id\\": \\"jklw\\",
+        \\"email\\": \\"what@test.com\\",
+        \\"firstName\\": \\"Gary\\",
+        \\"lastName\\": \\"Parker\\",
+        \\"address\\": \\"432 Main St\\",
+        \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+    }
+]
+
+------------------------------
+
+Change History
+
+Duplicate entry detected for _id field (jklw).
+email: test@test.com ----> what@test.com
+firstName: Peach ----> Gary
+lastName: Smith ----> Parker
+address: 123 Main St ----> 432 Main St
+entryDate: 2014-05-07T17:30:20+00:00 ----> 2014-05-07T18:30:20+00:00
+
+",
+  "uniqueLeadsContent": "{
+    \\"leads\\": [
+        {
+            \\"_id\\": \\"jklw\\",
+            \\"email\\": \\"what@test.com\\",
+            \\"firstName\\": \\"Gary\\",
+            \\"lastName\\": \\"Parker\\",
+            \\"address\\": \\"432 Main St\\",
+            \\"entryDate\\": \\"2014-05-07T18:30:20+00:00\\"
+        }
+    ]
+}",
+}
+`;
