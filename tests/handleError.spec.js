@@ -1,7 +1,7 @@
 const { handleError } = require('../lib/utils');
 const { ERRORS } = require('../lib/resources'); 
 
-describe('handleError', () => {
+describe('HandleError', () => {
     console.error = jest.fn();
 
     test('if called with an error, should display error message', async () => {

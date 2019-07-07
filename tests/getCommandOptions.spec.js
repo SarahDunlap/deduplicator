@@ -1,7 +1,7 @@
 const { getCommandOptions } = require('../lib/utils');
 const { PATHS } = require('../lib/resources');
 
-describe('CreateFileName', () => {
+describe('GetCommandOptions', () => {
     afterEach(() => {
         process.argv.splice(2);
     });
