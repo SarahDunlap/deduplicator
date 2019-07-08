@@ -1,6 +1,6 @@
-# Deduplicate CLI
+# Deduplicate
 
-Deduplicate CLI is a tool that will take identically structured json records and deduplicate the set with the following rules:
+Deduplicate is a tool that will take identically structured json records and deduplicate the set with the following rules:
 
 1. The data from the newest date should be preferred
 
