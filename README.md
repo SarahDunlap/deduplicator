@@ -44,7 +44,7 @@ deduplicate --file-path C:\some-file-path.json
 List of all options:
 
 ```
--V, --version           output the version number
+-v, --version           output the version number
 -d, --demo              use demo file for deduplication
 -f, --file-path <path>  use specified path to file for deduplication
 -o, --output <path>     use specified path for log file & unique leads file
